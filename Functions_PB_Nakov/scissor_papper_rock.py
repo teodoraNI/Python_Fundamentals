@@ -1,20 +1,24 @@
 import random
+from colorama import init
+from colorama import Fore, Back, Style
 
 quit_or_play = 'yes'
 tuple1 = ('scissor', 'rock', 'paper')
 count_comp_wins = 0
 count_player_wins = 0
+init()
 def print_results(w, p, c):
-    print(f"{w} won!\n  current score: \n    computer's wins: {c}\n    player's wins: {p}")
+    print(f"{w} won!\n  current score: \n    "
+          f"computer's wins: {c}\n    player's wins: {p}")
 
 while quit_or_play == 'yes':
     player_move = input("Chose [paper], [rock] or [scissor]: ")
     if player_move not in tuple1:
         raise SystemExit("Invalid input! Try again!")
     computer_move = random.choice(tuple1)
-    print(f"Computer's choice is: {computer_move}")
+    print(Fore.LIGHTMAGENTA_EX, f"Computer's choice is: {computer_move}")
     if computer_move == player_move:
-        print('draw')
+        print(Fore.LIGHTBLUE_EX, 'draw')
     elif computer_move == 'rock':
         if player_move == 'scissor':
             count_comp_wins += 1
